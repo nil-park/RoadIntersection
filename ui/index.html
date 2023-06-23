@@ -33,10 +33,14 @@
             <div id="ped3" class="ped-red" style="left: 160px; top: 200px;"></div>
         </div>
         <script>
-            setTimeout(() => {
-                for (let i = 0; i < 4; i++)
-                    document.getElementById(`ped${i}`).className = "ped-green";
-            }, 3000);
+            async function update() {
+                const res = await axios.get("/api/status");
+                for (let i = 0; i < 4; i++) {
+                    document.getElementById(`cl${i}`).className = `cl-${res.data[0][i]}`;
+                    document.getElementById(`ped${i}`).className = `ped-${res.data[1][i]}`;
+                }
+            }
+            setInterval(update, 200);
         </script>
     </body>
 </html>

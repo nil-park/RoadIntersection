@@ -1,5 +1,7 @@
+import json
 from os.path import dirname, abspath, join as ospj
 from flask import Flask, send_file, send_from_directory
+from controller import getStatus
 app = Flask(__name__)
 
 ROOT = abspath(dirname(dirname(__file__)))
@@ -15,6 +17,11 @@ def favicon():
 @app.route("/images/<path:path>", methods=["GET"])
 def images(path):
     return send_from_directory(ospj(ROOT, "ui", "images"), path)
+
+@app.route("/api/status", methods=["GET"])
+def status():
+    return json.dumps(getStatus()), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
