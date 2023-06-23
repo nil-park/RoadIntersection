@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="No-Cache">
+        <title>Basic Template</title>
+        <style>
+            body { margin: 0; text-align: center; }
+            .road { width: 800px; height: 800px; margin: 0; padding: 0; position: relative;
+                background-image: url("/images/intersection.png"); background-size: contain; }
+            .cl-all { width: 100px; height: 25px; position: absolute; background-image: url("/images/cl-all.svg"); }
+            .cl-red { width: 100px; height: 25px; position: absolute; background-image: url("/images/cl-red.svg"); }
+            .cl-yellow { width: 100px; height: 25px; position: absolute; background-image: url("/images/cl-yellow.svg"); }
+            .cl-green { width: 100px; height: 25px; position: absolute; background-image: url("/images/cl-green.svg"); }
+            .cl-left { width: 100px; height: 25px; position: absolute; background-image: url("/images/cl-left.svg"); }
+            .cl-leftgreen { width: 100px; height: 25px; position: absolute; background-image: url("/images/cl-leftgreen.svg"); }
+            .ped-red { width: 40px; height: 80px; position: absolute; background-image: url("/images/ped-red.svg"); background-size: cover; }
+            .ped-green { width: 40px; height: 80px; position: absolute; background-image: url("/images/ped-green.svg"); background-size: cover; }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div class="road">
+            <div id="cl0" class="cl-all" style="left: 405px; top: 110px;"></div>
+            <div id="cl1" class="cl-all" style="left: 627px; top: 442px; transform: rotate(90deg);"></div>
+            <div id="cl2" class="cl-all" style="left: 295px; top: 665px; transform: rotate(180deg);"></div>
+            <div id="cl3" class="cl-all" style="left: 74px; top: 333px; transform: rotate(-90deg);"></div>
+            <div id="ped0" class="ped-red" style="left: 530px; top: 140px;"></div>
+            <div id="ped1" class="ped-red" style="left: 595px; top: 530px;"></div>
+            <div id="ped2" class="ped-red" style="left: 233px; top: 590px;"></div>
+            <div id="ped3" class="ped-red" style="left: 160px; top: 200px;"></div>
+        </div>
+        <script>
+            setTimeout(() => {
+                for (let i = 0; i < 4; i++)
+                    document.getElementById(`ped${i}`).className = "ped-green";
+            }, 3000);
+        </script>
+    </body>
+</html>
